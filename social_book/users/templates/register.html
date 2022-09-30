@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<title>Register</title>
+<body class="login-page">
+  <div class="login-header box-shadow">
+    <div
+      class="container-fluid d-flex justify-content-between align-items-center"
+    >
+      <div class="brand-logo">
+        <a href="login.html">
+          <img src="static/vendors/images/deskapp-logo.svg" alt="pop" />
+        </a>
+      </div>
+      <div class="login-menu">
+        <ul>
+          <li><a href="login">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div
+    class="register-page-wrap d-flex align-items-center flex-wrap justify-content-center"
+  >
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 col-lg-7">
+          <img src="static/vendors/images/register-page-img.png" alt="" />
+        </div>
+        <div class="col-md-6 col-lg-5">
+          <div class="register-box bg-white box-shadow border-radius-10">
+            <div class="wizard-content">
+    
+                <h5>Basic Account Credentials</h5>
+                <div class="form-wrap max-width-600 mx-auto">
+                  <div class="form-group row">
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                      <div class="col-sm-8">
+                        {% for field in form %}
+
+                        <p>
+                          {{ field.label }}: <br />
+                          {{ field }}
+                        </p>
+
+                        {% for error in field.errors %}
+                        <small style="color: red">{{ error }}</small>
+                        {% endfor %}{% endfor %}
+                        <button type="submit" value="Submit" >Register</button>
+                       
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+{%endblock%}

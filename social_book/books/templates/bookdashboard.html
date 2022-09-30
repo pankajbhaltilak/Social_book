@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<title>Book Dashboard</title>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Book Dashboard</a>
+    <a href="/" class="btn btn-info">Home !</a> <hr />
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" name='data' placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+      
+    </form>
+  </div>
+</nav>
+
+<table class="table table-striped-columns" >
+    <hr>
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Book Name </th>
+            <th scope="col"> Description</th>
+            <th scope="col"> Year of Published </th>
+            <th scope="col"> Cost </th>
+            <th scope="col"> File </th>
+            <th scope="col"> Download </th>
+            <th scope="col"> Action</th>
+
+        </tr>
+        </thead>
+        {% for book  in Books %}
+        <tbody>
+        <tr>
+            <th scope="row"> {{book.id}}</th>
+            <td> {{book.file_name}}</td>
+            <td> {{book.description}}</td>
+            <td> {{book.Year_of_published}}</td>
+            <td> {{book.Cost}}</td>
+            <td> {{book.file}}</td>
+            <td><a href ="{{book.file.url}}" Download>{{book.file}} </a></td>
+            <td><a href ="{% url 'deleteBook' id=book.id %}" role='button'  class="btn btn-danger" </a>Delete</td>
+
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <a class="btn btn-primary" href="/home" role="button">Back</a>
+{%endblock%}

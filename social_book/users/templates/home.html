@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+ 
+{% block content %} 
+{% if user.is_authenticated %}
+<div class="alert alert-success" role="alert">
+  <h3>Welcome {{ user.username }}!</h3>
+  <a href="{% url 'logout' %}">Logout?</a><br>
+  <a href="books/uploadfile">Upload Books..!</a><br>
+  <a href="books/bookdashboard">Read Uploaded Books..!</a>
+</div>
+{% else %}
+<div class="alert alert-success" role="alert">
+  <h3>Welcome!</h3>
+  <a href="{% url 'register' %}">Signup</a>
+  <a href="{% url 'login' %}">Login</a>
+</div>
+{% endif %}
+ {%endblock%}

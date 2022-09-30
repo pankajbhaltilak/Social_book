@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>Login</title>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<body class="login-page">
+	<div class="login-header box-shadow">
+		<div class="container-fluid d-flex justify-content-between align-items-center">
+			<div class="brand-logo">
+				<a href="login">
+					<img src="{% static 'vendors/images/deskapp-logo.svg' %}" alt="logo">
+				</a>
+			</div>
+			<div class="login-menu">
+				<ul>
+					<li><a href="register.html">Register</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-6 col-lg-7">
+					<img src="{%static 'vendors/images/login-page-img.png'%}" alt="fgf">
+				</div>
+				<div class="col-md-6 col-lg-5">
+					<div class="login-box bg-white box-shadow border-radius-10">
+						<div class="login-title">
+							<h2 class="text-center text-primary">Login To DeskApp</h2>
+						</div>
+                        <form action="" method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <p>{{ field.label }}: <br> {{ field }}</p>
+                        {% endfor %}
+                        <button type="submit">Login</button>
+                        </form>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+                        
+					                        
+{% endblock %}

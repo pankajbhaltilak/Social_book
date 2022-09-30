@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>Upload file</title>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<body class="login-page">
+	<div class="login-header box-shadow">
+		<div class="container-fluid d-flex justify-content-between align-items-center">
+			<div class="brand-logo">
+				<a href="login">
+					<img src="{% static 'vendors/images/deskapp-logo.svg' %}" alt="logo">
+				</a>
+			</div>
+			<div class="login-menu">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-6 col-lg-7">
+					<img src="{%static 'vendors/images/login-page-img.png'%}" alt="fgf">
+				</div>
+				<div class="col-md-6 col-lg-5">
+					<div class="login-box bg-white box-shadow border-radius-10">
+						<div class="login-title">
+							<h2 class="text-center text-primary">Upload Your File</h2><br>
+							<form method='POST' action="uploadfile" enctype="multipart/form-data">
+								{% csrf_token %}		
+								<label for="file_name">Book Name :</label><br>
+								<input type="text" id="file_name" name="file_name" value="{{ file_name }}"><br>
+
+								<label for="description">Description :</label><br>
+								<input type="text" id="description" name="description" value="{{ description }}"><br>
+
+								<label for="Year_of_published">Year of Published :</label><br>
+								<input type="number" id="Year_of_published" name="Year_of_published" value="{{ Year_of_published }}"><br>
+								
+								<label for="Cost">Cost :</label><br>
+								<input type="number" id="Cost" name="Cost" value="{{ Cost }}"><br>
+								
+								<label for="visibility">Public:</label>
+								<input class="form-check-input" type="checkbox" id="visibility" value="{{ visibility }}" aria-label="visibility">
+
+								<input type="file" name="file" accept=".pdf,.jpeg"> <br>  <br> 
+
+								<button type="submit" class="btn btn-primary">Submit</button><hr>
+								<a class="btn btn-primary" href="/home" role="button">Back</a>
+								<a href="bookdashboard">Read Uploaded Books..!</a>
+							</form>
+						</div>
+                       <hello>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+                        
+					                        
+{% endblock %}

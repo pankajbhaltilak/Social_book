@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<title>Public visibility</title>
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a href="dashboard" class="navbar-brand">Authors And Sellers</a>
+    {% comment %} <form action="{% url 'search' %}" method="GET">
+      <input type="checkbox" name="public_visibility" id="search" >
+      <button class="btn btn-outline-success" type="submit">public_visibility</button>
+    </form> {% endcomment %}
+  </div>
+</nav>
+<table class="table table-striped-columns" >
+    <hr>
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">First Name </th>
+            <th scope="col"> Last Name</th>
+            <th scope="col"> Email </th>
+            <th scope="col"> Role </th>
+            <th scope="col"> Public Visibility </th>
+
+        </tr>
+        </thead>
+        {% for queryset in  queryset %}
+        <tbody>
+        <tr>
+            <th scope="row"> {{queryset.id}}</th>
+            <td> {{queryset.first_name}}</td>
+            <td> {{queryset.last_name}}</td>
+            <td> {{queryset.email}}</td>
+            <td> {{queryset.roles}}</td>
+            <td> {{queryset.public_visibility}}</td>
+
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <a class="btn btn-primary" href="/" role="button">Back</a>
+{%endblock%}

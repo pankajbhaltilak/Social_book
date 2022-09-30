@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<title>dashboard</title>
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a href="dashboard" class="navbar-brand">Author and Sellers</a>
+    <form action="{% url 'search' %}" method="GET">
+      <input type="checkbox" name="public_visibility" id="search" >
+      <button class="btn btn-outline-success" type="submit">public_visibility</button>
+    </form>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" name='data' placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<table class="table table-striped-columns" >
+    <hr>
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">First Name </th>
+            <th scope="col"> Last Name</th>
+            <th scope="col"> Email </th>
+            <th scope="col"> Role </th>
+            <th scope="col"> Public Visibility </th>
+
+        </tr>
+        </thead>
+        {% for user in User %}
+        <tbody>
+        <tr>
+            <th scope="row"> {{user.id}}</th>
+            <td> {{user.first_name}}</td>
+            <td> {{user.last_name}}</td>
+            <td> {{user.email}}</td>
+            <td> {{user.roles}}</td>
+            <td> {{user.public_visibility}}</td>
+
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <a class="btn btn-primary" href="/" role="button">Back</a>
+{%endblock%}
