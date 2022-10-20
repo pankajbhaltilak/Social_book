@@ -2,10 +2,10 @@
 <title>dashboard</title>
 <nav class="navbar bg-light">
   <div class="container-fluid">
-    <a href="dashboard" class="navbar-brand">Author and Sellers</a>
+    <a href="dashboard" style="font-size:20px" class="navbar-brand"> <span class="glyphicon glyphicon-user"> Author and Sellers</span></a>
     <form action="{% url 'search' %}" method="GET">
       <input type="checkbox" name="public_visibility" id="search" >
-      <button class="btn btn-outline-success" type="submit">public_visibility</button>
+      <button type="submit"  class="glyphicon glyphicon-eye-open"></button>
     </form>
     <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" name='data' placeholder="Search" aria-label="Search">
